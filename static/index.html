@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <title>Ratskeller Esslingen – fein & authentisch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body class="page is-preload">
+
+<header class="rk-header">
+    <div class="rk-header-top">
+        <div class="rk-header-spacer"></div>
+
+        <div class="rk-header-logo">
+            <img src="img/LogoRatskeller_juni2025.png" alt="Ratskeller Esslingen" class="rk-logo-img" />
+            <div class="rk-logo-text"></div>
+        </div>
+
+        <div class="rk-header-spacer"></div>
+    </div>
+
+    <!-- Navigation/Reiter: absichtlich entfernt -->
+</header>
+
+<main class="rk-main">
+
+    <!-- Textblock auf dem Page-Background (kein Overlay mehr) -->
+    <section class="rk-intro" aria-label="Kurzbeschreibung">
+        <p class="rk-intro-text">
+            Im Herzen der historischen Esslinger Altstadt verbindet der Ratskeller zeitlose Eleganz mit moderner Genusskultur. ......Opening soon&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+    </section>
+    </section>
+
+    <!-- Bilder: Link zur Speisekarte (PDF) -->
+    <section class="hero-row hero-full">
+        <div class="hero-image hero-image--split">
+            <div class="hero-split">
+                <a class="rk-menu-link" href="pdf/speisekarte.pdf" aria-label="Speisekarte öffnen (PDF)">
+                    <img src="img/hero_ph.jpg" alt="Speisekarte (PDF) – Bild 1" loading="eager" />
+                </a>
+
+                <a class="rk-menu-link" href="pdf/speisekarte.pdf" aria-label="Speisekarte öffnen (PDF)">
+                    <img src="img/hero_ch.jpg" alt="Speisekarte (PDF) – Bild 2" loading="eager" />
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="rk-footer">
+    <span class="rk-footer-sep">|</span>
+    <span>Kontakt: Tel. +49 711 88224135</span>
+    <span class="rk-footer-sep">|</span>
+    <span>Am Hafenmarkt 1 · 73728 Esslingen</span>
+    <span class="rk-footer-sep">|</span>
+    <a href="impressum.html">Impressum</a>
+    <span class="rk-footer-sep">|</span>
+    <a href="datenschutz.html">Datenschutz</a>
+    <span class="rk-footer-sep">|</span>
+    <a class="rk-social" href="https://instagram.com/ratskeller_esslingen/" target="_blank" rel="noopener noreferrer">
+        <img src="img/Insta.png" alt="" width="18" height="18" />
+    </a>
+
+</footer>
+
+<!-- PDF Modal -->
+<div class="rk-modal" id="rk-pdf-modal" aria-hidden="true">
+    <div class="rk-modal-dialog" role="dialog" aria-modal="true" aria-label="Speisekarte">
+        <div class="rk-modal-head">
+            <div class="rk-modal-title">Speisekarte (PDF)</div>
+
+            <div class="rk-modal-actions">
+                <a class="rk-modal-download" id="rk-pdf-download" href="pdf/speisekarte.pdf" download>Download</a>
+                <button class="rk-modal-close" type="button" id="rk-pdf-close" aria-label="Schließen">×</button>
+            </div>
+        </div>
+
+        <div class="rk-modal-body">
+            <iframe id="rk-pdf-frame" title="Speisekarte PDF" loading="lazy"></iframe>
+
+            <p class="rk-modal-fallback">
+                Wenn die PDF nicht angezeigt wird:
+                <a id="rk-pdf-open" href="pdf/speisekarte.pdf">PDF in neuem Tab öffnen</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script src="js/rk.js"></script>
+</body>
+</html>
