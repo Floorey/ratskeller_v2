@@ -14,44 +14,132 @@
         <div class="rk-header-spacer"></div>
 
         <div class="rk-header-logo">
-            <img src="img/LogoRatskeller_juni2025.png" alt="Ratskeller Esslingen" class="rk-logo-img" />
+            <img
+                    src="img/LogoRatskeller_juni2025.png"
+                    alt="Ratskeller Esslingen"
+                    class="rk-logo-img"
+            />
             <div class="rk-logo-text"></div>
         </div>
 
         <div class="rk-header-spacer"></div>
     </div>
 
-    <!-- Navigation/Reiter: absichtlich entfernt -->
+    <nav class="rk-tabs" aria-label="Hauptnavigation">
+        <a class="rk-tab" href="index.html" aria-current="page">Start</a>
+        <a class="rk-tab" href="philosophie.html">Philosophie</a>
+        <a class="rk-tab" href="speisen.html">Speisen</a>
+        <a class="rk-tab" href="reservierung.html">Reservierung</a>
+        <a class="rk-tab" href="events.html">Events</a>
+        <a class="rk-tab" href="bewerbungen.html">Bewerbungen</a>
+    </nav>
+
+    <div class="rk-nav-select" aria-label="Navigation">
+        <label class="rk-sr-only" for="rk-nav-select">Navigation</label>
+        <select id="rk-nav-select">
+            <option value="index.html" selected>Start</option>
+            <option value="philosophie.html">Philosophie</option>
+            <option value="speisen.html">Speisen</option>
+            <option value="reservierung.html">Reservierung</option>
+            <option value="events.html">Events</option>
+            <option value="bewerbungen.html">Bewerbungen</option>
+        </select>
+    </div>
 </header>
 
 <main class="rk-main">
 
-    <!-- Textblock auf dem Page-Background (kein Overlay mehr) -->
     <section class="rk-intro" aria-label="Kurzbeschreibung">
         <p class="rk-intro-text">
-            Im Herzen der historischen Esslinger Altstadt verbindet der Ratskeller zeitlose Eleganz mit moderner Genusskultur. ......Opening soon&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+            Im Herzen der historischen Esslinger Altstadt verbindet der Ratskeller zeitlose Eleganz
+            mit moderner Genusskultur. Opening soon.
+        </p>
     </section>
 
-    <section class="rk-home-links" aria-label="Schnellzugriff">
-        <a href="philosophie.html">Philosophie</a>
-        <a href="speisen.html">Speisen &amp; Getränke</a>
-        <a href="reservierung.html">Reservierung</a>
-        <a href="events.html">Events</a>
-        <a href="bewerbungen.html">Bewerbungen</a>
-    </section>
-
-    <!-- Bilder: Link zur Speisekarte (PDF) -->
-    <section class="hero-row hero-full">
+    <section class="hero-row hero-full" aria-label="Bildergalerie">
         <div class="hero-image hero-image--split">
-            <div class="hero-split">
-                <a class="rk-menu-link" href="pdf/speisekarte.pdf" aria-label="Speisekarte öffnen (PDF)">
-                    <img src="img/hero_ph.jpg" alt="Speisekarte (PDF) – Bild 1" loading="eager" />
+            <div class="hero-split rk-rotator" data-interval="4500">
+
+                <a class="rk-menu-link rk-slide is-active"
+                   href="pdf/speisekarte.pdf"
+                   aria-label="Speisekarte öffnen (PDF)">
+                    <img src="img/hero.jpg" alt="Ratskeller Esslingen – Motiv 1" loading="eager" />
                 </a>
 
-                <a class="rk-menu-link" href="pdf/speisekarte.pdf" aria-label="Speisekarte öffnen (PDF)">
-                    <img src="img/hero_ch.jpg" alt="Speisekarte (PDF) – Bild 2" loading="eager" />
+                <a class="rk-menu-link rk-slide"
+                   href="pdf/speisekarte.pdf"
+                   aria-label="Speisekarte öffnen (PDF)">
+                    <img src="img/hero_ch.jpg" alt="Ratskeller Esslingen – Motiv 2" loading="lazy" />
                 </a>
+
+                <a class="rk-menu-link rk-slide"
+                   href="pdf/speisekarte.pdf"
+                   aria-label="Speisekarte öffnen (PDF)">
+                    <img src="img/hero_ph.jpg" alt="Ratskeller Esslingen – Motiv 3" loading="lazy" />
+                </a>
+
+                <a class="rk-menu-link rk-slide"
+                   href="pdf/speisekarte.pdf"
+                   aria-label="Speisekarte öffnen (PDF)">
+                    <img src="img/rk-img2.jpg" alt="Ratskeller Esslingen – Motiv 4" loading="lazy" />
+                </a>
+
+                <a class="rk-menu-link rk-slide"
+                   href="pdf/speisekarte.pdf"
+                   aria-label="Speisekarte öffnen (PDF)">
+                    <img src="img/rk-img4.PNG" alt="Ratskeller Esslingen – Motiv 5" loading="lazy" />
+                </a>
+
+                <a class="rk-menu-link rk-slide"
+                   href="pdf/speisekarte.pdf"
+                   aria-label="Speisekarte öffnen (PDF)">
+                    <img src="img/rk-img5.PNG" alt="Ratskeller Esslingen – Motiv 6" loading="lazy" />
+                </a>
+
+                <div class="rk-rotator-dots" aria-label="Slideshow Navigation">
+                    <button class="rk-dot is-active" type="button" aria-label="Bild 1 anzeigen"></button>
+                    <button class="rk-dot" type="button" aria-label="Bild 2 anzeigen"></button>
+                    <button class="rk-dot" type="button" aria-label="Bild 3 anzeigen"></button>
+                    <button class="rk-dot" type="button" aria-label="Bild 4 anzeigen"></button>
+                    <button class="rk-dot" type="button" aria-label="Bild 5 anzeigen"></button>
+                    <button class="rk-dot" type="button" aria-label="Bild 6 anzeigen"></button>
+                </div>
+
             </div>
+        </div>
+    </section>
+
+    <section class="rk-section" aria-label="Willkommen">
+        <div class="rk-section-inner">
+            <h2 class="rk-h2">Willkommen</h2>
+            <p>
+                Ratskeller Esslingen – wo Geschichte den Rahmen gibt und Genuss das Erlebnis formt.
+                Feine Küche, ehrliche Produkte, regionale Handschrift und weltoffene Inspiration.
+            </p>
+            <p>
+                <a class="rk-link-inline" href="philosophie.html">Mehr über unsere Philosophie</a>
+            </p>
+        </div>
+    </section>
+
+    <section class="rk-section" aria-label="Speisen">
+        <div class="rk-section-inner">
+            <h2 class="rk-h2">Speisen</h2>
+            <p>
+                Speise- und Getränkekarte sowie aktuelle Mittagskarte stehen als PDF bereit.
+            </p>
+            <p>
+                <a
+                        class="rk-menu-link-inline"
+                        href="pdf/speisekarte.pdf"
+                        data-rk-pdf="pdf/speisekarte.pdf"
+                        data-rk-pdf-title="Speisekarte (PDF)">
+                    Speisekarte (PDF) öffnen
+                </a>
+            </p>
+            <p>
+                <a class="rk-link-inline" href="speisen.html">Zur Speisen-Seite</a>
+            </p>
         </div>
     </section>
 
@@ -68,16 +156,14 @@
     <a href="datenschutz.html">Datenschutz</a>
     <span class="rk-footer-sep">|</span>
     <a class="rk-social" href="https://instagram.com/ratskeller_esslingen/" target="_blank" rel="noopener noreferrer">
-        <img src="img/Insta.png" alt="" width="18" height="18" />
+        <img src="img/Insta.png" alt="Instagram" width="18" height="18" />
     </a>
-
 </footer>
 
-<!-- PDF Modal -->
 <div class="rk-modal" id="rk-pdf-modal" aria-hidden="true">
-    <div class="rk-modal-dialog" role="dialog" aria-modal="true" aria-label="Speisekarte">
+    <div class="rk-modal-dialog" role="dialog" aria-modal="true" aria-label="PDF Vorschau">
         <div class="rk-modal-head">
-            <div class="rk-modal-title">Speisekarte (PDF)</div>
+            <div class="rk-modal-title" id="rk-pdf-modal-title">Speisekarte (PDF)</div>
 
             <div class="rk-modal-actions">
                 <a class="rk-modal-download" id="rk-pdf-download" href="pdf/speisekarte.pdf" download>Download</a>
@@ -86,16 +172,21 @@
         </div>
 
         <div class="rk-modal-body">
-            <iframe id="rk-pdf-frame" title="Speisekarte PDF" loading="lazy"></iframe>
+            <iframe id="rk-pdf-frame" title="PDF Vorschau" loading="lazy"></iframe>
 
             <p class="rk-modal-fallback">
                 Wenn die PDF nicht angezeigt wird:
-                <a id="rk-pdf-open" href="pdf/speisekarte.pdf">PDF in neuem Tab öffnen</a>
+                <a id="rk-pdf-open" href="pdf/speisekarte.pdf">PDF direkt öffnen</a>
             </p>
         </div>
     </div>
 </div>
 
+<script src="js/jquery.min.js"></script>
+<script src="js/browser.min.js"></script>
+<script src="js/breakpoints.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/main.js"></script>
 <script src="js/rk.js"></script>
 </body>
 </html>
