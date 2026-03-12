@@ -12,26 +12,20 @@
 <header class="rk-header">
     <div class="rk-header-top">
         <div class="rk-header-spacer"></div>
-
         <div class="rk-header-logo">
-            <img
-                    src="img/LogoRatskeller_juni2025.png"
-                    alt="Ratskeller Esslingen"
-                    class="rk-logo-img"
-            />
+            <img src="img/LogoRatskeller_juni2025.png" alt="Ratskeller Esslingen" class="rk-logo-img" />
             <div class="rk-logo-text"></div>
         </div>
-
         <div class="rk-header-spacer"></div>
     </div>
 
     <nav class="rk-tabs" aria-label="Hauptnavigation">
         <a class="rk-tab" href="index.html">Start</a>
         <a class="rk-tab" href="philosophie.html" aria-current="page">Philosophie</a>
-        <a class="rk-tab" href="menue.html">Menü</a>
+        <a class="rk-tab" href="speisen.html">Speisen</a>
         <a class="rk-tab" href="reservierung.html">Reservierung</a>
         <a class="rk-tab" href="anreise.html">Anreise</a>
-        <a class="rk-tab" href="karriere.html">Karriere</a>
+        <a class="rk-tab" href="bewerbungen.html">Bewerbungen</a>
     </nav>
 
     <div class="rk-nav-select" aria-label="Navigation">
@@ -39,16 +33,15 @@
         <select id="rk-nav-select">
             <option value="index.html">Start</option>
             <option value="philosophie.html" selected>Philosophie</option>
-            <option value="menue.html">Menü</option>
+            <option value="speisen.html">Speisen</option>
             <option value="reservierung.html">Reservierung</option>
             <option value="anreise.html">Anreise</option>
-            <option value="karriere.html">Karriere</option>
+            <option value="bewerbungen.html">Bewerbungen</option>
         </select>
     </div>
 </header>
 
 <main class="rk-main">
-
     <section class="rk-section rk-section--narrow" aria-label="Philosophie">
         <div class="rk-section-inner">
             <h1 class="rk-h1">Philosophie</h1>
@@ -62,7 +55,7 @@
             <p>
                 Was uns geprägt hat, sind viele Jahre Erfahrung in renommierten Restaurants im In- und Ausland.
                 Stationen, die unseren kulinarischen Horizont erweitert und unsere Handschrift geschärft haben.
-                Unsere Küche ist fein und authentisch zugleich. Regional gedacht, weltoffen interpretiert.
+                Unsere Küche ist fein und authentisch zugleich: regional gedacht, weltoffen interpretiert.
             </p>
 
             <p>
@@ -72,14 +65,15 @@
             </p>
 
             <p>
-                Mit Techniken wie Räuchern, Fermentieren und Einlegen schaffen wir eine naturnahe Aromatik und
-                machen saisonale Vielfalt ganzjährig erlebbar. Jeder Gang erzählt von Handwerk, Kreativität
-                und Respekt vor dem Produkt.
+                Mit Techniken wie Räuchern, Fermentieren und Einlegen schaffen wir eine naturnahe Aromatik
+                und machen saisonale Vielfalt ganzjährig erlebbar. Jeder Gang erzählt von Handwerk,
+                Kreativität und Respekt vor dem Produkt.
             </p>
 
             <p>
-                Gastfreundschaft ist für uns ebenso wichtig wie Kochkunst. Ein zuvorkommender Service und ein
-                sorgfältig abgestimmtes Getränkeangebot machen jeden Besuch zu einem ganzheitlichen Erlebnis.
+                Gastfreundschaft ist für uns ebenso wichtig wie Kochkunst. Ein zuvorkommender Service
+                und ein sorgfältig abgestimmtes Getränkeangebot machen jeden Besuch zu einem
+                ganzheitlichen Erlebnis.
             </p>
 
             <p class="rk-signature">
@@ -114,15 +108,16 @@
             </div>
         </div>
     </section>
-
 </main>
+
 
 <footer class="rk-footer">
     <span class="rk-footer-sep">|</span>
     <span>Kontakt: Tel. +49 711 88224135</span>
     <span class="rk-footer-sep">|</span>
-    <span>Am Hafenmarkt 1 · 73728 Esslingen</span>
+    <span>Am Hafenmarkt 1 · 73728 Esslingen am Neckar</span>
     <span class="rk-footer-sep">|</span>
+    <span>Öffnungszeiten: Mo.Do.&So. 12-14Uhr & 18-22Uhr/Fr. 12-14Uhr & 18-23Uhr/Sa. 17-23Uhr/ Di.&Mi. geschlossen</span>
     <a href="impressum.html">Impressum</a>
     <span class="rk-footer-sep">|</span>
     <a href="datenschutz.html">Datenschutz</a>
@@ -132,27 +127,6 @@
     </a>
 </footer>
 
-<div class="rk-modal" id="rk-pdf-modal" aria-hidden="true">
-    <div class="rk-modal-dialog" role="dialog" aria-modal="true" aria-label="PDF Vorschau">
-        <div class="rk-modal-head">
-            <div class="rk-modal-title" id="rk-pdf-modal-title">PDF Vorschau</div>
-
-            <div class="rk-modal-actions">
-                <a class="rk-modal-download" id="rk-pdf-download" href="pdf/speisekarte.pdf" download>Download</a>
-                <button class="rk-modal-close" type="button" id="rk-pdf-close" aria-label="Schließen">×</button>
-            </div>
-        </div>
-
-        <div class="rk-modal-body">
-            <iframe id="rk-pdf-frame" title="PDF Vorschau" loading="lazy"></iframe>
-
-            <p class="rk-modal-fallback">
-                Wenn die PDF nicht angezeigt wird:
-                <a id="rk-pdf-open" href="pdf/speisekarte.pdf">PDF direkt öffnen</a>
-            </p>
-        </div>
-    </div>
-</div>
 
 <script src="js/jquery.min.js"></script>
 <script src="js/browser.min.js"></script>

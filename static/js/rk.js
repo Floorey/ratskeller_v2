@@ -2,19 +2,8 @@
     const body = document.body;
     if (!body) return;
 
-    const INTERNAL_HTML_PAGES = new Set([
-        'index.html',
-        'philosophie.html',
-        'speisen.html',
-        'reservierung.html',
-        'anreise.html',
-        'bewerbungen.html',
-        'impressum.html',
-        'datenschutz.html'
-    ]);
-
     // -----------------------------------------
-    // 0) HTML5UP-Style: preload raus nach Load
+    // 0) Preload nach Load entfernen
     // -----------------------------------------
     window.addEventListener('load', () => {
         window.setTimeout(() => {
@@ -23,21 +12,23 @@
     });
 
     // -----------------------------------------
-    // 1) Fokus-Outlines nur bei Tastatur (Tab)
+    // 1) Fokus-Outlines nur bei Tastatur
     // -----------------------------------------
     function setKeyboardMode(on) {
         body.classList.toggle('rk-keyboard', on);
     }
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Tab') setKeyboardMode(true);
+        if (e.key === 'Tab') {
+            setKeyboardMode(true);
+        }
     });
 
     document.addEventListener('mousedown', () => setKeyboardMode(false));
     document.addEventListener('touchstart', () => setKeyboardMode(false), { passive: true });
 
     // -----------------------------------------
-    // 2) Scrollbar-Shift verhindern (Modal)
+    // 2) Scrollbar-Breite für Modal merken
     // -----------------------------------------
     function updateScrollbarWidthVar() {
         const sw = window.innerWidth - document.documentElement.clientWidth;
@@ -48,25 +39,25 @@
     window.addEventListener('resize', updateScrollbarWidthVar);
 
     // -----------------------------------------
-    // 3) Anti-Harvesting Email Reveal
+    // 3) Anti-Harvesting E-Mail Reveal
     // -----------------------------------------
     function wireEmailReveal() {
-        const btns = document.querySelectorAll('.rk-email-reveal');
-        if (!btns.length) return;
+        const buttons = document.querySelectorAll('.rk-email-reveal');
+        if (!buttons.length) return;
 
-        btns.forEach((btn) => {
+        buttons.forEach((btn) => {
             btn.addEventListener('click', () => {
                 const user = btn.getAttribute('data-rk-email-user') || '';
                 const domain = btn.getAttribute('data-rk-email-domain') || '';
                 const tld = btn.getAttribute('data-rk-email-tld') || '';
-                const addr = `${user}@${domain}.${tld}`;
 
+                const address = `${user}@${domain}.${tld}`;
                 const out = btn.parentElement?.querySelector('.rk-email-out');
                 if (!out) return;
 
                 const a = document.createElement('a');
-                a.href = `mailto:${addr}`;
-                a.textContent = addr;
+                a.href = `mailto:${address}`;
+                a.textContent = address;
 
                 out.innerHTML = ' ';
                 out.appendChild(a);
@@ -80,57 +71,16 @@
     wireEmailReveal();
 
     // -----------------------------------------
-    // Helper
-    // -----------------------------------------
-    function normalizeHref(href) {
-        if (!href) return '';
-        return href.trim();
-    }
-
-    function getFileNameFromHref(href) {
-        try {
-            const url = new URL(href, window.location.href);
-            const path = url.pathname.split('/').pop() || '';
-            return path.toLowerCase();
-        } catch {
-            const clean = href.split('#')[0].split('?')[0];
-            return clean.split('/').pop()?.toLowerCase() || '';
-        }
-    }
-
-    function isPdfHref(href) {
-        return href.toLowerCase().split('?')[0].split('#')[0].endsWith('.pdf');
-    }
-
-    function isInternalHtmlPage(href) {
-        const fileName = getFileNameFromHref(href);
-        return INTERNAL_HTML_PAGES.has(fileName);
-    }
-
-    function navigateWithTransition(targetHref) {
-        if (!targetHref) return;
-        body.classList.add('rk-leave');
-
-        window.setTimeout(() => {
-            window.location.href = targetHref;
-        }, 450);
-    }
-
-    // -----------------------------------------
     // 4) Mobile Navigation Select
+    //    Wichtig: keine Transition, kein Intercept
     // -----------------------------------------
     function wireNavSelect() {
         const navSelect = document.getElementById('rk-nav-select');
         if (!navSelect) return;
 
         navSelect.addEventListener('change', () => {
-            const target = normalizeHref(navSelect.value);
+            const target = (navSelect.value || '').trim();
             if (!target) return;
-
-            if (isInternalHtmlPage(target)) {
-                navigateWithTransition(target);
-                return;
-            }
 
             window.location.href = target;
         });
@@ -155,7 +105,7 @@
 
     function getFocusable(root) {
         return Array.from(root.querySelectorAll(focusablesSelector))
-            .filter(el => !el.hasAttribute('disabled') && el.tabIndex !== -1);
+            .filter((el) => !el.hasAttribute('disabled') && el.tabIndex !== -1);
     }
 
     function openPdfModal(pdfUrl, title, triggerEl) {
@@ -189,6 +139,7 @@
         if (lastFocus && typeof lastFocus.focus === 'function') {
             lastFocus.focus();
         }
+
         lastFocus = null;
     }
 
@@ -198,7 +149,9 @@
 
     if (modal) {
         modal.addEventListener('click', (e) => {
-            if (e.target === modal) closePdfModal();
+            if (e.target === modal) {
+                closePdfModal();
+            }
         });
 
         const dialog = modal.querySelector('.rk-modal-dialog');
@@ -208,20 +161,21 @@
     }
 
     // -----------------------------------------
-    // 6) Link Handling
-    //    - PDFs ins Modal
-    //    - interne HTML Seiten mit Slide Transition
-    //    - Externe Links normal
+    // 6) Nur PDF-Links abfangen
+    //    HTML-Links NICHT anfassen
     // -----------------------------------------
+    function isPdfHref(href) {
+        return href.toLowerCase().split('?')[0].split('#')[0].endsWith('.pdf');
+    }
+
     document.addEventListener('click', (e) => {
         const link = e.target.closest('a');
         if (!link) return;
 
-        const rawHref = link.getAttribute('href');
-        const href = normalizeHref(rawHref);
+        const href = (link.getAttribute('href') || '').trim();
         if (!href) return;
 
-        // target blank / download / modifier keys normal lassen
+        // Diese Fälle normal laufen lassen
         if (
             link.target === '_blank' ||
             link.hasAttribute('download') ||
@@ -242,46 +196,31 @@
         const dataPdf = link.getAttribute('data-rk-pdf');
         const pdfTitle = link.getAttribute('data-rk-pdf-title') || 'PDF Vorschau';
 
-        // PDFs über data-rk-pdf bevorzugt
         if (dataPdf) {
             e.preventDefault();
             openPdfModal(dataPdf, pdfTitle, link);
             return;
         }
 
-        // Direkte PDF-Links intern ins Modal
         if (!isExternal && isPdfHref(href)) {
             e.preventDefault();
             openPdfModal(href, pdfTitle, link);
-            return;
-        }
-
-        // Externe Links normal
-        if (isExternal) return;
-
-        // Interne bekannte HTML-Seiten mit Transition
-        if (isInternalHtmlPage(href)) {
-            e.preventDefault();
-            navigateWithTransition(href);
         }
     });
 
     // -----------------------------------------
-    // 7) ESC + TAB Focus Trap für Modal
+    // 7) ESC + TAB Focus Trap im Modal
     // -----------------------------------------
     document.addEventListener('keydown', (e) => {
         if (!modal || !modal.classList.contains('is-open')) return;
 
-        const key = e.key;
-        const code = e.code;
-
-        if (key === 'Escape' || code === 'Escape') {
+        if (e.key === 'Escape') {
             e.preventDefault();
             closePdfModal();
             return;
         }
 
-        if (!(key === 'Tab' || code === 'Tab')) return;
+        if (e.key !== 'Tab') return;
 
         const focusables = getFocusable(modal);
         if (focusables.length === 0) {
@@ -306,7 +245,7 @@
     });
 
     // -----------------------------------------
-    // 8) Simple Hero Rotator + Dots
+    // 8) Optionaler Hero-Rotator
     // -----------------------------------------
     (function wireHeroRotator() {
         const rotators = document.querySelectorAll('.rk-rotator');
@@ -315,9 +254,10 @@
         rotators.forEach((root) => {
             const slides = Array.from(root.querySelectorAll('.rk-slide'));
             const dots = Array.from(root.querySelectorAll('.rk-dot'));
+
             if (slides.length <= 1) return;
 
-            let idx = slides.findIndex((s) => s.classList.contains('is-active'));
+            let idx = slides.findIndex((slide) => slide.classList.contains('is-active'));
             if (idx < 0) idx = 0;
 
             const interval = parseInt(root.getAttribute('data-interval') || '4500', 10);
@@ -325,8 +265,9 @@
 
             function syncDots() {
                 dots.forEach((dot, i) => {
-                    dot.classList.toggle('is-active', i === idx);
-                    dot.setAttribute('aria-pressed', i === idx ? 'true' : 'false');
+                    const active = i === idx;
+                    dot.classList.toggle('is-active', active);
+                    dot.setAttribute('aria-pressed', active ? 'true' : 'false');
                 });
             }
 
@@ -339,7 +280,9 @@
 
             function start() {
                 if (timer) return;
-                timer = window.setInterval(() => show(idx + 1), interval);
+                timer = window.setInterval(() => {
+                    show(idx + 1);
+                }, interval);
             }
 
             function stop() {
