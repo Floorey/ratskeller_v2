@@ -72,7 +72,6 @@
 
     // -----------------------------------------
     // 4) Mobile Navigation Select
-    //    Wichtig: keine Transition, kein Intercept
     // -----------------------------------------
     function wireNavSelect() {
         const navSelect = document.getElementById('rk-nav-select');
@@ -108,14 +107,27 @@
             .filter((el) => !el.hasAttribute('disabled') && el.tabIndex !== -1);
     }
 
+    function buildCacheBustedUrl(url) {
+        const cleanUrl = (url || '').trim();
+        if (!cleanUrl) return cleanUrl;
+        return `${cleanUrl}${cleanUrl.includes('?') ? '&' : '?'}v=${Date.now()}`;
+    }
+
     function openPdfModal(pdfUrl, title, triggerEl) {
         if (!modal || !frame || !btnClose || !linkDownload || !linkOpen) return;
 
         lastFocus = triggerEl || document.activeElement;
 
-        frame.src = pdfUrl;
+        const freshPdfUrl = buildCacheBustedUrl(pdfUrl);
+
+        // Vorschau immer frisch laden
+        frame.src = freshPdfUrl;
+
+        // Download bleibt auf echter Datei ohne Busting
         linkDownload.href = pdfUrl;
-        linkOpen.href = pdfUrl;
+
+        // Direkt öffnen ebenfalls frisch
+        linkOpen.href = freshPdfUrl;
 
         if (modalTitle) {
             modalTitle.textContent = title || 'PDF Vorschau';
@@ -162,7 +174,6 @@
 
     // -----------------------------------------
     // 6) Nur PDF-Links abfangen
-    //    HTML-Links NICHT anfassen
     // -----------------------------------------
     function isPdfHref(href) {
         return href.toLowerCase().split('?')[0].split('#')[0].endsWith('.pdf');
@@ -175,7 +186,6 @@
         const href = (link.getAttribute('href') || '').trim();
         if (!href) return;
 
-        // Diese Fälle normal laufen lassen
         if (
             link.target === '_blank' ||
             link.hasAttribute('download') ||
