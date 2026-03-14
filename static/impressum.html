@@ -2,82 +2,89 @@
 <html lang="de">
 <head>
     <meta charset="utf-8" />
-    <title>Datenschutz – Ratskeller Esslingen</title>
+    <title>Impressum – Ratskeller Esslingen</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/main.css" />
 </head>
 
-<body class="page is-preload">
+<body class="page">
 
 <header class="rk-header">
-    <div class="rk-header-top">
-        <div class="rk-header-spacer"></div>
-        <div class="rk-header-logo">
+    <div class="rk-header-logo">
+        <a href="index.html" class="rk-logo-link" aria-label="Zur Startseite">
             <img src="img/LogoRatskeller_juni2025.png" alt="Ratskeller Esslingen" class="rk-logo-img" />
-            <div class="rk-logo-text"></div>
-        </div>
-        <div class="rk-header-spacer"></div>
+        </a>
+        <div class="rk-logo-text"></div>
     </div>
 
-    <nav class="rk-tabs" aria-label="Hauptnavigation">
-        <a class="rk-tab" href="index.html">Start</a>
-        <a class="rk-tab" href="philosophie.html">Philosophie</a>
-        <a class="rk-tab" href="speisen.html">Speisen</a>
-        <a class="rk-tab" href="reservierung.html">Reservierung</a>
-        <a class="rk-tab" href="anreise.html">Anreise</a>
-        <a class="rk-tab" href="bewerbungen.html">Bewerbungen</a>
-    </nav>
-
-    <div class="rk-nav-select" aria-label="Navigation">
-        <label class="rk-sr-only" for="rk-nav-select">Navigation</label>
-        <select id="rk-nav-select">
-            <option value="index.html">Start</option>
-            <option value="philosophie.html">Philosophie</option>
-            <option value="speisen.html">Speisen</option>
-            <option value="reservierung.html">Reservierung</option>
-            <option value="anreise.html">Anreise</option>
-            <option value="bewerbungen.html">Bewerbungen</option>
-        </select>
-    </div>
 </header>
 
 <main class="rk-main">
-    <section class="rk-section rk-section--narrow rk-legal" aria-label="Datenschutz">
-        <div class="rk-section-inner rk-legal-card">
-            <h1>Datenschutz</h1>
-            <p>
-                Diese Website verarbeitet personenbezogene Daten ausschließlich im technisch
-                notwendigen Umfang. Weitere Informationen zu Art, Umfang und Zweck der
-                Verarbeitung personenbezogener Daten werden in der vollständigen
-                Datenschutzerklärung ergänzt.
-            </p>
+    <section class="rk-legal">
+        <div class="rk-legal-card">
+            <h1>Impressum</h1>
 
-            <h2>Verantwortliche Stelle</h2>
+            <h2>Anbieter</h2>
             <p>
                 Ratskeller Esslingen<br />
                 Am Hafenmarkt 1<br />
-                73728 Esslingen am Neckar
+                73728 Esslingen am Neckar<br />
+                Deutschland
+            </p>
+
+            <h2>Vertreten durch</h2>
+            <p>
+                Philipp Enderle<br />
+                Christian Koch
             </p>
 
             <h2>Kontakt</h2>
             <p>
-                Telefon: +49 711 88224135
-            </p>
-            <p>
-                <span class="rk-email-out"></span>
+                Telefon: <span>…</span><br />
+
+                <!-- Anti-Harvesting: keine Email im HTML -->
+                E-Mail:
                 <button
                         type="button"
                         class="rk-email-reveal"
                         data-rk-email-user="info"
-                        data-rk-email-domain="ratskelleresslingen"
-                        data-rk-email-tld="de">
+                        data-rk-email-domain="ratskeller-esslingen"
+                        data-rk-email-tld="de"
+                        aria-label="E-Mail anzeigen">
                     E-Mail anzeigen
                 </button>
+
+                <span class="rk-email-out" aria-live="polite"></span>
+                <noscript>
+                    <br />E-Mail: info [at] ratskelleresslingen [dot] de
+                </noscript>
+            </p>
+
+            <h2>Umsatzsteuer</h2>
+            <p>
+                Umsatzsteuer-ID: <span>… (falls vorhanden)</span>
+            </p>
+
+            <h2>Haftung für Inhalte</h2>
+            <p>
+                Die Inhalte dieser Website werden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit,
+                Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
+            </p>
+
+            <h2>Haftung für Links</h2>
+            <p>
+                Diese Website enthält ggf. Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben.
+                Für diese fremden Inhalte übernehmen wir keine Gewähr.
+            </p>
+
+            <h2>Urheberrecht</h2>
+            <p>
+                Die durch die Seitenersteller erstellten Inhalte und Werke auf diesen Seiten unterliegen dem Urheberrecht.
+                Beiträge Dritter sind als solche gekennzeichnet.
             </p>
         </div>
     </section>
 </main>
-
 
 <footer class="rk-footer">
     <span class="rk-footer-sep">|</span>
@@ -85,7 +92,6 @@
     <span class="rk-footer-sep">|</span>
     <span>Am Hafenmarkt 1 · 73728 Esslingen am Neckar</span>
     <span class="rk-footer-sep">|</span>
-    <span>Öffnungszeiten: Mo.Do.&So. 12-14Uhr & 18-22Uhr/Fr. 12-14Uhr & 18-23Uhr/Sa. 17-23Uhr/ Di.&Mi. geschlossen</span>
     <a href="impressum.html">Impressum</a>
     <span class="rk-footer-sep">|</span>
     <a href="datenschutz.html">Datenschutz</a>
