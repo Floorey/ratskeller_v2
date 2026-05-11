@@ -458,6 +458,22 @@ body.rk-modal-open {
     padding-right: var(--rk-scrollbar-w, 0px);
 }
 
+.rk-home-pdf-link {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.rk-home-pdf-link a {
+    color: #f6ecdf;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    font-size: 1.4rem;
+}
+
+.rk-home-pdf-link a:hover {
+    text-decoration: underline;
+}
+
 /* ===========================
    E-Mail Button
    =========================== */

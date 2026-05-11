@@ -171,6 +171,21 @@
     padding: 0.3rem 0.5rem;
 }
 
+.rk-home-pdf-link {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.rk-home-pdf-link a {
+    color: #f6ecdf;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+}
+
+.rk-home-pdf-link a:hover {
+    text-decoration: underline;
+}
+
 /* ===========================
    Footer Mobile
    =========================== */
