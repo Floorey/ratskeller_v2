@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+---
+
+<BaseLayout title="Ratskeller Esslingen – fein & authentisch">
+  <SiteHeader currentPath="/" />
+
+  <main class="rk-main">
+    <section class="rk-intro" aria-label="Kurzbeschreibung">
+      <p class="rk-intro-text">
+        Im Herzen der historischen Esslinger Altstadt verbindet der Ratskeller zeitlose Eleganz
+        mit moderner Genusskultur. Opening soon.
+      </p>
+    </section>
+
+    <section class="rk-section rk-section--narrow">
+      <div class="rk-section-inner">
+        <h1 class="rk-h1">Ratskeller Esslingen</h1>
+        <p>
+          Dies ist der erste Astro-Aufbau auf Basis der bestehenden statischen Seite.
+          Die Gestaltung nutzt die vorhandenen Farben und lokalen Fonts.
+        </p>
+        <p>
+          <a href="/reservierung/">Zur Reservierung</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .rk-intro {
+    margin: 0.6rem auto 1.2rem;
+    max-width: 70rem;
+    text-align: center;
+  }
+
+  .rk-intro-text {
+    margin: 0;
+    font-size: clamp(18px, 2.2vw, 30px);
+    line-height: 1.25;
+    color: rgba(246, 236, 223, 0.96);
+  }
+</style>
