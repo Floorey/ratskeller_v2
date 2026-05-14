@@ -1,0 +1,144 @@
+---
+const widgetUrl = "/sandbox/gastronovi-reservation.html";
+---
+
+<section class="rk-section rk-section--narrow" aria-label="Reservierung">
+  <div class="rk-section-inner">
+    <h1 class="rk-h1">Reservierung</h1>
+
+    <p>
+      Reservierungen können direkt über unser Buchungstool vorgenommen werden.
+    </p>
+
+    <p>
+      Für Gruppenanfragen oder Reservierungen ab 10 Personen bitten wir um Kontaktaufnahme per E-Mail.
+    </p>
+
+    <p>
+      <span class="rk-email-out"></span>
+      <button
+        type="button"
+        class="rk-email-reveal"
+        data-rk-email-user="info"
+        data-rk-email-domain="ratskelleresslingen"
+        data-rk-email-tld="de"
+      >
+        E-Mail anzeigen
+      </button>
+    </p>
+
+    <div class="rk-reservation-consent" data-reservation-intro>
+      <p>
+        Das Reservierungswidget wird von Gastronovi bereitgestellt und erst nach Ihrer aktiven Auswahl geladen.
+        Dadurch bleibt externer Script-Code von der Hauptseite getrennt.
+      </p>
+
+      <button
+        type="button"
+        class="rk-button"
+        data-load-reservation
+        data-widget-url={widgetUrl}
+      >
+        Reservierung laden
+      </button>
+    </div>
+
+    <div class="rk-reservation-frame-wrap" data-reservation-mount hidden></div>
+  </div>
+</section>
+
+<script>
+  const emailButtons = document.querySelectorAll<HTMLButtonElement>(".rk-email-reveal");
+
+  emailButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const user = button.getAttribute("data-rk-email-user") ?? "";
+      const domain = button.getAttribute("data-rk-email-domain") ?? "";
+      const tld = button.getAttribute("data-rk-email-tld") ?? "";
+      const address = `${user}@${domain}.${tld}`;
+      const out = button.parentElement?.querySelector(".rk-email-out");
+
+      if (!out || user.length === 0 || domain.length === 0 || tld.length === 0) {
+        return;
+      }
+
+      const link = document.createElement("a");
+      link.href = `mailto:${address}`;
+      link.textContent = address;
+
+      out.replaceChildren(" ", link);
+      button.disabled = true;
+      button.textContent = "E-Mail angezeigt";
+    });
+  });
+
+  const loadButton = document.querySelector<HTMLButtonElement>("[data-load-reservation]");
+  const mount = document.querySelector<HTMLElement>("[data-reservation-mount]");
+  const intro = document.querySelector<HTMLElement>("[data-reservation-intro]");
+
+  loadButton?.addEventListener("click", () => {
+    if (!mount || mount.querySelector("iframe")) {
+      return;
+    }
+
+    const url = loadButton.dataset.widgetUrl;
+    if (!url) {
+      return;
+    }
+
+    const frame = document.createElement("iframe");
+    frame.src = url;
+    frame.title = "Online-Reservierung Ratskeller Esslingen";
+    frame.loading = "lazy";
+    frame.referrerPolicy = "strict-origin-when-cross-origin";
+    frame.className = "rk-reservation-frame";
+
+    frame.setAttribute(
+      "sandbox",
+      ["allow-scripts", "allow-forms", "allow-popups", "allow-top-navigation-by-user-activation"].join(" "),
+    );
+
+    mount.hidden = false;
+    mount.replaceChildren(frame);
+    intro?.setAttribute("hidden", "");
+  });
+</script>
+
+<style>
+  .rk-email-reveal {
+    font-family: var(--rk-font-heading);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.6rem;
+    border: 1px solid rgba(246, 236, 223, 0.55);
+    color: var(--rk-text-light);
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .rk-email-reveal:disabled {
+    opacity: 0.65;
+    cursor: default;
+  }
+
+  .rk-reservation-consent {
+    margin-top: 1.2rem;
+    padding: 1rem;
+    border: 1px solid rgba(246, 236, 223, 0.22);
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  .rk-reservation-frame-wrap {
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+
+  .rk-reservation-frame {
+    display: block;
+    width: min(100%, 590px);
+    min-height: 440px;
+    border: 0;
+    background: transparent;
+  }
+</style>

@@ -1,0 +1,111 @@
+@import "./tokens.css";
+
+html {
+  overflow-y: scroll;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--rk-font-body);
+  font-size: var(--rk-font-size-body);
+  line-height: 1.7;
+  background-color: var(--rk-body-bg);
+  color: var(--rk-text-light);
+}
+
+a {
+  color: var(--rk-link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.rk-main {
+  width: min(1280px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.7rem 0 3rem;
+  flex: 1;
+}
+
+.rk-section {
+  margin-top: 1.8rem;
+}
+
+.rk-section--narrow .rk-section-inner {
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.rk-section-inner {
+  background: rgba(247, 245, 242, 0.10);
+  border: 1px solid rgba(246, 236, 223, 0.18);
+  padding: 1.4rem 1.6rem;
+  backdrop-filter: blur(2px);
+}
+
+.rk-h1,
+.rk-h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-family: var(--rk-font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  line-height: 1.15;
+  color: var(--rk-text-light);
+}
+
+.rk-h1 {
+  font-size: clamp(1.5rem, 2vw, 2rem);
+}
+
+.rk-h2 {
+  font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+}
+
+.rk-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.75rem 1.1rem;
+  border: 1px solid rgba(246, 236, 223, 0.55);
+  background: transparent;
+  color: var(--rk-text-light);
+  font-family: var(--rk-font-heading);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.rk-button:hover {
+  background: rgba(246, 236, 223, 0.10);
+}
+
+.rk-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (max-width: 900px) {
+  .rk-main {
+    width: calc(100% - 2rem);
+    padding-inline: 0;
+  }
+}

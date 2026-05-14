@@ -1,0 +1,160 @@
+---
+interface NavItem {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = "/" } = Astro.props;
+
+const navItems: NavItem[] = [
+  { href: "/", label: "Start" },
+  { href: "/philosophie/", label: "Philosophie" },
+  { href: "/speisen/", label: "Speisen" },
+  { href: "/reservierung/", label: "Reservierung" },
+  { href: "/anreise/", label: "Anreise" },
+  { href: "/bewerbungen/", label: "Bewerbungen" },
+];
+---
+
+<header class="rk-header">
+  <div class="rk-header-top">
+    <div class="rk-header-spacer"></div>
+
+    <a class="rk-header-logo" href="/" aria-label="Ratskeller Esslingen Startseite">
+      <img
+        src="/img/LogoRatskeller_juni2025.png"
+        alt="Ratskeller Esslingen"
+        class="rk-logo-img"
+      />
+    </a>
+
+    <div class="rk-header-spacer"></div>
+  </div>
+
+  <nav class="rk-tabs" aria-label="Hauptnavigation">
+    {navItems.map((item) => (
+      <a
+        class="rk-tab"
+        href={item.href}
+        aria-current={currentPath === item.href ? "page" : undefined}
+      >
+        {item.label}
+      </a>
+    ))}
+  </nav>
+
+  <div class="rk-nav-select" aria-label="Navigation">
+    <label class="rk-sr-only" for="rk-nav-select">Navigation</label>
+    <select id="rk-nav-select" data-rk-nav-select>
+      {navItems.map((item) => (
+        <option value={item.href} selected={currentPath === item.href}>
+          {item.label}
+        </option>
+      ))}
+    </select>
+  </div>
+</header>
+
+<script>
+  const navSelect = document.querySelector<HTMLSelectElement>("[data-rk-nav-select]");
+
+  navSelect?.addEventListener("change", () => {
+    const target = navSelect.value.trim();
+    if (target.length > 0) {
+      window.location.href = target;
+    }
+  });
+</script>
+
+<style>
+  .rk-header {
+    background-color: var(--rk-header-bg);
+    color: #000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  .rk-header-top {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .rk-header-logo {
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .rk-logo-img {
+    height: 200px;
+    width: auto;
+    max-width: min(92vw, 720px);
+    display: block;
+  }
+
+  .rk-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.8rem 1.4rem;
+    padding: 0 1.5rem 1rem;
+  }
+
+  .rk-tab {
+    font-family: var(--rk-font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.82rem;
+    color: var(--rk-text-dark);
+  }
+
+  .rk-tab[aria-current="page"] {
+    text-decoration: underline;
+  }
+
+  .rk-nav-select {
+    display: none;
+    padding: 0 1rem 1rem;
+  }
+
+  .rk-nav-select select {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    background: #fff;
+    color: #000;
+    font-family: var(--rk-font-body);
+  }
+
+  @media (max-width: 900px) {
+    .rk-header-top {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: 0.4rem;
+    }
+
+    .rk-header-spacer {
+      display: none;
+    }
+
+    .rk-logo-img {
+      height: 150px;
+      max-width: 88vw;
+    }
+
+    .rk-tabs {
+      display: none;
+    }
+
+    .rk-nav-select {
+      display: block;
+    }
+  }
+</style>
