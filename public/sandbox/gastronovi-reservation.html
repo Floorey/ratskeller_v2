@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src https://services.gastronovi.com; frame-src https://services.gastronovi.com; connect-src https://services.gastronovi.com; img-src https://services.gastronovi.com data:; style-src 'unsafe-inline' https://services.gastronovi.com; font-src https://services.gastronovi.com data:; form-action https://services.gastronovi.com; base-uri 'none'; object-src 'none'"
+    />
+    <title>Reservierung</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 400px;
+        overflow-x: hidden;
+        background: transparent;
+      }
+
+      .rk-reservation-widget {
+        width: 100%;
+        min-height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="rk-reservation-widget">
+      <script
+        type="text/javascript"
+        src="https://services.gastronovi.com/restaurants/133650/scripts/reservation?width=550&height=400"
+        async>
+      </script>
+    </div>
+  </body>
+</html>

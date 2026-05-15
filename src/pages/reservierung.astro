@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import ReservationBox from "../components/ReservationBox.astro";
+---
+
+<BaseLayout title="Reservierung – Ratskeller Esslingen">
+  <SiteHeader currentPath="/reservierung/" />
+
+  <main class="rk-main">
+    <ReservationBox />
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
