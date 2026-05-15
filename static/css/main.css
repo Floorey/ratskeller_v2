@@ -4,7 +4,7 @@
 
 @font-face {
     font-family: "KarmaLight";
-    src: url("../Fonts/KARMA-LIGHT.TTF") format("truetype");
+    src: url("../fonts/KARMA-LIGHT.TTF") format("truetype");
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -12,7 +12,7 @@
 
 @font-face {
     font-family: "CronosProDisplay";
-    src: url("../Fonts/Cronos-Pro-Display_12439.ttf") format("truetype");
+    src: url("../fonts/Cronos-Pro-Display_12439.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
